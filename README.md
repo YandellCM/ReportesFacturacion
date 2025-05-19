@@ -25,7 +25,7 @@ Este es un sistema de facturación básico hecho en **PHP** utilizando **MySQL**
 
 ## ✅ Requisitos
 
-- PHP 7.4 o superior
+- PHP 8.2.12
 - MySQL / MariaDB
 - Servidor local (XAMPP o otro que utilices)
 - Navegador web (Chrome en mi caso)
