@@ -62,7 +62,7 @@ CREATE TABLE facturadetalle (
 ## Agrega categorías predefinidas (opcional pero recomendado):
 
 
-# INSERT INTO categorias (Nombre) VALUES
+INSERT INTO categorias (Nombre) VALUES
 ('Cereales'), ('Lácteos'), ('Carnes'), ('Verduras'), ('Frutas'),
 ('Bebidas'), ('Snacks'), ('Limpieza'), ('Higiene personal'),
 ('Panadería'), ('Otros');
