@@ -1,0 +1,326 @@
+:root {
+  --color-primario: #3498db;
+  --color-secundario: #2d77b3;
+  --color-fondo: #eef3f9;
+  --color-blanco: #ffffff;
+  --color-texto: #155724;
+  --color-exito: #d4edda;
+  --color-borde-exito: #c3e6cb;
+  --color-alerta: #e74c3c;
+  --color-alerta-hover: #c0392b;
+  --color-imprimir: #27ae60;
+  --color-imprimir-hover: #1e8449;
+  --sombra: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--color-fondo);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.6s ease-in;
+}
+
+.form-container {
+  background: var(--color-blanco);
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+  width: 95%;
+  max-width: 900px;
+  overflow: hidden;
+  margin: 40px auto;
+  animation: fadeIn 0.6s ease-in;
+  padding: 20px;
+}
+
+.form-header {
+  background-color: var(--color-primario);
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
+}
+
+form.formulario {
+  padding: 25px 30px;
+}
+
+.formulario input,
+.formulario select {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: #fdfdfd;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.formulario input:focus,
+.formulario select:focus {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 10px rgba(41, 128, 185, 0.2);
+  outline: none;
+}
+
+.tabla-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabla {
+  min-width: 800px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  background-color: var(--color-blanco);
+  box-shadow: var(--sombra);
+  border-radius: 12px;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.tabla th,
+.tabla td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.tabla th {
+  background-color: var(--color-primario);
+  color: white;
+  font-weight: bold;
+}
+
+.tabla tr:hover {
+  background-color: #f2f9ff;
+}
+
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.boton-accion,
+.boton-eliminar,
+.boton-imprimir,
+.boton-volver {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+.boton-accion {
+  background-color: var(--color-primario);
+  color: white;
+}
+
+.boton-accion:hover {
+  background-color: var(--color-secundario);
+  transform: scale(1.05);
+}
+
+.boton-eliminar {
+  background-color: var(--color-alerta);
+  color: white;
+}
+
+.boton-eliminar:hover {
+  background-color: var(--color-alerta-hover);
+  transform: scale(1.05);
+}
+
+.boton-imprimir {
+  background-color: var(--color-imprimir);
+  color: white;
+}
+
+.boton-imprimir:hover {
+  background-color: var(--color-imprimir-hover);
+  transform: scale(1.05);
+}
+
+.boton-volver {
+  display: block;
+  width: 100%;
+  background-color: var(--color-alerta);
+  color: white;
+  margin-top: 30px;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.boton-volver:hover {
+  background-color: var(--color-alerta-hover);
+  transform: scale(1.05);
+}
+
+.mensaje {
+  background-color: var(--color-exito);
+  border: 1px solid var(--color-borde-exito);
+  color: var(--color-texto);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+  animation: fadeIn 0.4s ease-in;
+}
+
+@media screen and (max-width: 480px) {
+  .form-container {
+    margin: 20px;
+    border-radius: 15px;
+    padding: 15px;
+  }
+
+  .formulario input,
+  .formulario select {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .acciones {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tabla th,
+  .tabla td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .form-header {
+    font-size: 18px;
+  }
+}
+
+.boton-accion,
+.boton-eliminar,
+.boton-imprimir,
+.boton-volver {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.boton-accion {
+  background-color: var(--color-primario);
+  color: white;
+}
+
+.boton-accion:hover {
+  background-color: var(--color-secundario);
+  transform: scale(1.05);
+}
+
+.boton-eliminar {
+  background-color: var(--color-alerta);
+  color: white;
+}
+
+.boton-eliminar:hover {
+  background-color: var(--color-alerta-hover);
+  transform: scale(1.05);
+}
+
+.boton-imprimir {
+  background-color: var(--color-imprimir);
+  color: white;
+}
+
+.boton-imprimir:hover {
+  background-color: var(--color-imprimir-hover);
+  transform: scale(1.05);
+}
+
+.boton-volver {
+  display: inline-block;
+  margin: 25px auto 0;
+  background-color: var(--color-alerta);
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 10px;
+  width: auto;
+}
+
+.boton-volver:hover {
+  background-color: var(--color-alerta-hover);
+  transform: scale(1.05);
+}
+
+.boton-guardar {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 14px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 220px;
+}
+
+.boton-guardar:hover {
+  background-color: var(--color-secundario);
+  transform: scale(1.05);
+}
+
+.boton-volver-secundario {
+  background-color: var(--color-alerta);
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 180px;
+  text-align: center;
+  display: inline-block;
+}
+
+.boton-volver-secundario:hover {
+  background-color: var(--color-alerta-hover);
+  transform: scale(1.05);
+}
