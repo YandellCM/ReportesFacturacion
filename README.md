@@ -267,7 +267,7 @@ if (!$factura) {
 </head>
 <body>
     <div class="form-container">
-        <div class="form-header">REPORTE DE FACTURA #<?php echo $factura["ID"]; ?></div>
+        <div class="form-header">REPORTE DE FACTURA <?php echo $factura["ID"]; ?></div>
 
         <form class="formulario">
             <input type="text" value="Descripción: <?php echo htmlspecialchars($factura["Descripcion"]); ?>" readonly>
@@ -794,3 +794,76 @@ Editar o eliminar facturas
 
 Generar reportes en PDF con TCPDF
 
+## ¿Qué es Markdown?
+
+Markdown es un lenguaje de marcado ligero que te permite escribir documentos claros y bien estructurados (como manuales o instrucciones) usando solo texto plano.
+
+Es como escribir en un bloc de notas, pero con formato (títulos, listas, imágenes, etc.)
+
+## ¿Qué necesitas para usar Markdown?
+
+No tienes que instalar nada complicado. Solo necesitas esto:
+
+Opcion 1: Visual Studio Code y una Extensión de Markdown
+Si estás usando Visual Studio Code (VS Code), sigue estos pasos:
+
+#### 1. Abre tu proyecto facturacion2 (o el nombre que le hayas puesto a tu proyecto) en VS Code
+
+![imagen1](imagen1.png)
+
+#### 2. Instala la extensión “Markdown All in One”
+Pasos:
+1.	Presiona Ctrl + Shift + X o ve al ícono de Extensiones en la barra lateral izquierda.
+2.	En la barra de búsqueda escribe: Markdown All in One
+3.	Clic en Instalar
+
+![imagen2](imagen2.png)
+
+### 3. Usa un archivo README.md para documentar
+
+#### ¿Qué es README.md?
+Es un archivo donde se explica qué hace tu proyecto, cómo instalarlo, cómo usarlo y cualquier otro detalle importante. El formato .md significa Markdown, que es un tipo de archivo de texto con formato especial.
+
+#### Pasos para crear un README.md en Visual Studio Code
+
+##### Paso 1. Crear un archivo nuevo
+•	En el explorador de archivos (a la izquierda), haz clic derecho sobre un espacio vacío o sobre la carpeta raíz.
+•	Selecciona "New File".
+
+![imagen3](imagen3.png)
+
+##### Escribe el nombre del archivo: README.md (es importante que lo escribas exactamente así)
+
+![imagen4](imagen4.png)
+
+#### Paso 2: Escribe el contenido del README con esta estructura si quieres.
+
+![imagenest](imagenest.png)
+
+#### Paso 3: Guardar el archivo
+•	Presiona Ctrl + S para guardar.
+•	Verifica que el archivo aparece ahora en tu lista de archivos.
+
+#### Paso 4: (Opcional) Vista previa del Markdown
+Puedes instalar una extensión llamada Markdown Preview Enhanced en VSCode para ver cómo se ve tu README como si estuviera en GitHub:
+•	Ve a la barra lateral izquierda > Extensiones (icono de cuadrito)
+
+
+##### Busca: Markdown Preview Enhanced
+
+![imagen6](imagen6.png)
+
+•	Instálala.
+•	Luego abre README.md y presiona Ctrl + K + V para ver la vista previa.
+
+![imagen7](imagen7.png)
+
+## Asi se ve:
+
+![imagen8](imagen8.png)
+
+![imagen9](imagen9.png)
+
+![imagen10](imagen10.png)
+
+![imagen11](imagen11.png)
