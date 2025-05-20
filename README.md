@@ -895,7 +895,7 @@ Ve a: https://sourceforge.net/projects/tcpdf/
 
 Descarga el archivo ZIP.
 
-Extrae la carpeta y copia la carpeta tcpdf dentro de tu proyecto principal (facturacion2).
+Extrae la carpeta y copia la carpeta tcpdf dentro de tu proyecto principal que en mi caso se llama (facturacion2). La carpeta la puedes copiar con Ctrl + C y Ctrl + V para pegarla en tu carpeta del proyecto.
 
 ![carptcpdf](carptcpdf.png)
 
