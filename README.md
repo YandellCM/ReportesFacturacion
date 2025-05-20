@@ -867,3 +867,194 @@ Puedes instalar una extensión llamada Markdown Preview Enhanced en VSCode para 
 ![imagen10](imagen10.png)
 
 ![imagen11](imagen11.png)
+
+
+## 🧾 Generar Reportes en PHP con TCPDF
+
+Este proyecto utiliza la librería TCPDF para generar reportes en PDF de facturas almacenadas en una base de datos MySQL.
+
+## 🧰 ¿Qué es TCPDF?
+
+TCPDF es una librería de PHP que permite generar archivos PDF de forma dinámica sin necesidad de herramientas externas. Es open source, gratuita y no requiere instalación como tal, solo copiar la carpeta.
+
+## 🛠 Requisitos Previos
+Antes de crear un reporte, asegúrate de tener lo siguiente:
+
+Carpeta del proyecto: facturacion2/
+
+Base de datos: bd_facturacionpruebas con la tabla facturadetalle
+
+Tener funcionando un servidor local: XAMPP, Laragon o WAMP
+
+Tener la carpeta tcpdf/ dentro de tu proyecto
+
+Tener creado el archivo pdf_factura.php
+
+## ✅ Paso 1: Descargar TCPDF
+Ve a: https://sourceforge.net/projects/tcpdf/
+
+Descarga el archivo ZIP.
+
+Extrae la carpeta y copia la carpeta tcpdf dentro de tu proyecto principal (facturacion2).
+
+![carptcpdf](carptcpdf.png)
+
+## ✅ Paso 2: Crear el archivo pdf_factura.php
+Este archivo se encarga de:
+
+Tomar el ID de la factura desde la URL
+
+Consultar los datos en MySQL
+
+Generar el PDF con estilo
+
+## 📄 Código completo de pdf_factura.php
+
+```php
+<?php
+require_once('tcpdf/tcpdf.php');
+include("conexion.php");
+
+$id = intval($_GET["id"]);
+$consulta = $conexion->query("SELECT * FROM facturadetalle WHERE ID = $id");
+$factura = $consulta->fetch_assoc();
+
+$pdf = new TCPDF();
+$pdf->SetMargins(15, 20, 15);
+$pdf->AddPage();
+$pdf->SetFont('helvetica', '', 12);
+
+$logo = 'logo-cafam.jpg';
+if (file_exists($logo)) {
+    $pdf->Image($logo, 15, 10, 25);
+}
+
+$fecha = date("d/m/Y");
+
+$html = '
+<style>
+    h1 {
+        background-color: #3498db;
+        color: #fff;
+        padding: 12px;
+        text-align: center;
+        font-size: 20px;
+        border-radius: 6px;
+        margin-top: 30px;
+    }
+    .info {
+        font-size: 13px;
+        margin-top: 20px;
+    }
+    .info td {
+        padding: 5px 10px;
+    }
+    .tabla {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 25px;
+    }
+    .tabla th {
+        background-color: #3498db;
+        color: white;
+        padding: 10px;
+        font-size: 13px;
+    }
+    .tabla td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: 13px;
+        text-align: center;
+    }
+    .total {
+        font-weight: bold;
+        background-color: #ecf0f1;
+    }
+    .footer {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 11px;
+        color: #666;
+    }
+</style>
+
+<h1>Factura #' . $factura["ID"] . '</h1>
+
+<table class="info">
+    <tr>
+        <td><strong>Fecha:</strong> ' . $fecha . '</td>
+        <td><strong>Emitido por:</strong> Colegio Cafam Fernando Arturo de Meriño</td>
+    </tr>
+    <tr>
+        <td><strong>Dirección:</strong> Av. 27 de Febrero, Santo Domingo</td>
+        <td><strong>Correo:</strong> colegio@cafammerino.edu.do</td>
+    </tr>
+</table>
+
+<table class="tabla">
+    <tr>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>ITBIS</th>
+        <th>Descuento</th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <td>' . htmlspecialchars($factura["Descripcion"]) . '</td>
+        <td>' . htmlspecialchars($factura["Categoria"]) . '</td>
+        <td>' . $factura["Cantidad"] . '</td>
+        <td>RD$' . number_format($factura["PrecioUnitario"], 2) . '</td>
+        <td>RD$' . number_format($factura["Itebis"], 2) . '</td>
+        <td>RD$' . number_format($factura["Descuento"], 2) . '</td>
+        <td class="total">RD$' . number_format($factura["TotalGeneral"], 2) . '</td>
+    </tr>
+</table>
+
+<div class="footer">
+    ¡Gracias por confiar en nuestra institución educativa!<br>
+    Si tiene alguna pregunta, escríbanos al correo institucional.<br>
+    © Colegio Cafam Fernando Arturo de Meriño - 2025
+</div>
+';
+
+$pdf->writeHTML($html, true, false, true, false, '');
+$pdf->Output('Factura_' . $factura["ID"] . '.pdf', 'I');
+```
+
+## PDF Generado
+
+![pdf](pdf.png)
+
+## ✅ Paso 3: Conectar el botón desde listar_facturas.php
+En tu formulario de facturas (donde ves la tabla), agrega el siguiente enlace para que el usuario pueda generar el PDF desde ahí:
+
+```php
+<a class="boton-imprimir" href="pdf_factura.php?id=<?php echo $factura['ID']; ?>" target="_blank">Imprimir</a>
+```
+
+#### Este enlace:
+
+Envia el ID por URL
+
+Llama a pdf_factura.php
+
+TCPDF se encarga de generar el PDF
+
+![btnimprimir](btnimprimir.png)
+
+## ✅ Resultado Final
+Cuando haces clic en el botón Imprimir:
+
+Se toma el ID de la factura.
+
+Se hace una consulta a la base de datos.
+
+Se genera un PDF con diseño profesional.
+
+El navegador abre el PDF automáticamente.
+
+
+
+
